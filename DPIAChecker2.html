@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DPIA Checker</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .hidden { display: none; }
+    .button { margin-top: 20px; }
+    .button-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+<!-- Page 1: Category A (1 of 2) -->
+<div id="page1">
+  <a href="DPIAChecker.html">
+    <img src="logo.png" alt="Company Logo" style="width: 200px; height: auto;">
+  </a>
+  <h1>DPIA Checker</h1>
+  <p><b>Does your activity involve any of the following?</b></p>
+  <p><b>Category A (1 of 2)</b></p>
+  <div>
+    <input type="checkbox" id="a1"> Profiling people on a large scale<br><br>
+    <input type="checkbox" id="a2"> Monitoring of a publicly accessible area on a large scale<br><br>
+    <input type="checkbox" id="a3"> Sensitive personal information or criminal offence data on a large scale<br><br>
+    <input type="checkbox" id="a4"> Combining, comparing or matching personal information from multiple sources<br><br>
+  </div>
+  <button class="button" onclick="showPage('page2')">Next</button>
+</div>
+
+<!-- Page 2: Category A (2 of 2) -->
+<div id="page2" class="hidden">
+  <a href="DPIAChecker.html">
+    <img src="logo.png" alt="Company Logo" style="width: 200px; height: auto;">
+  </a>
+  <h1>DPIA Checker</h1>
+  <p><b>Does your activity involve any of the following?</b></p>
+  <p><b>Category A (2 of 2)</b></p>
+  <div>
+    <input type="checkbox" id="a5"> Processing where a data breach could jeopardise a person's health or physical safety<br><br>
+    <input type="checkbox" id="a6"> Extensive automated decision-making or profiling to make significant decisions about people<br><br>
+    <input type="checkbox" id="a7"> Children’s personal information for profiling, automated decision-making, marketing or offering online services<br><br>
+    <input type="checkbox" id="a8"> Making decisions about someone's access to a service, opportunity or benefit based on profiling, automated decision-making or sensitive personal information<br><br>
+  </div>
+  <button class="button" onclick="showPage('page1')">Back</button>
+  <button class="button" onclick="showPage('page3')">Next</button>
+</div>
+
+<!-- Page 3: Category B (1 of 1) -->
+<div id="page3" class="hidden">
+  <a href="DPIAChecker.html">
+    <img src="logo.png" alt="Company Logo" style="width: 200px; height: auto;">
+  </a>
+  <h1>DPIA Checker</h1>
+  <p><b>Does your activity involve any of the following?</b></p>
+  <p><b>Category B (1 of 1)</b></p>
+  <div>
+    <input type="checkbox" id="b1"> Biometric data or genetic data<br><br>
+    <input type="checkbox" id="b2"> Tracking location or online/offline behaviour<br><br>
+    <input type="checkbox" id="b3"> Collection or use of personal information without providing a Privacy Notice<br><br>
+    <input type="checkbox" id="b4"> Innovative technology, or new use of an existing technology, including Artificial Intelligence<br><br>
+  </div>
+  <button class="button" onclick="showPage('page2')">Back</button>
+  <button class="button" onclick="showPage('page4')">Next</button>
+</div>
+
+<!-- Page 4: Category C (1 of 1) -->
+<div id="page4" class="hidden">
+  <a href="DPIAChecker.html">
+    <img src="logo.png" alt="Company Logo" style="width: 200px; height: auto;">
+  </a>
+  <h1>DPIA Checker</h1>
+  <p><b>Does your activity involve any of the following?</b></p>
+  <p><b>Category C (1 of 1)</b></p>
+  <div>
+    <input type="checkbox" id="c1"> A monitoring system<br><br>
+    <input type="checkbox" id="c2"> Evaluating or scoring<br><br>
+    <input type="checkbox" id="c3"> Processing on a large scale<br><br>
+    <input type="checkbox" id="c4"> Sensitive or highly personal information<br><br>
+    <input type="checkbox" id="c5"> Information relating to vulnerable people<br><br>
+    <input type="checkbox" id="c6"> Innovative technological or organisational solutions<br><br>
+    <input type="checkbox" id="c7"> Automated decision-making with significant effects<br><br>
+    <input type="checkbox" id="c8"> Preventing some people from exercising a right or using a service or contract<br><br>
+  </div>
+  <button class="button" onclick="showPage('page3')">Back</button>
+  <button class="button" onclick="showPage('page5')">Next</button>
+</div>
+
+<!-- Page 5: User Details Form -->
+<div id="page5" class="hidden">
+  <a href="DPIAChecker.html">
+    <img src="logo.png" alt="Company Logo" style="width: 200px; height: auto;">
+  </a>
+  <h1>Your Details</h1>
+  <p><b>Please fill in your details to get the results of whether you require a DPIA or not.</b></p>
+  <form id="userDetailsForm">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="phone">Telephone Number:</label><br>
+    <input type="tel" id="phone" name="phone" required><br><br>
+
+    <label for="organisation">Organisation:</label><br>
+    <input type="text" id="organisation" name="organisation" required><br>
+
+    <div class="button-container">
+      <button type="button" class="button" onclick="showPage('page4')">Back</button>
+      <button type="button" class="button" onclick="submitForm()">Submit</button>
+    </div>
+  </form>
+</div>
+
+<!-- Page 6: Results -->
+<div id="page6" class="hidden">
+  <a href="DPIAChecker.html">
+    <img src="logo.png" alt="Company Logo" style="width: 200px; height: auto;">
+  </a>
+  <h1>DPIA Results</h1>
+  <p id="resultMessage"></p>
+  <p>If you have any questions or need further assistance, please contact us on hello@apims.co.uk</p>
+  <button class="button" onclick="restart('page1')">Restart</button>
+</div>
+
+<script>
+// Function to navigate between pages
+function showPage(page, direction = 'next') {
+  // Hide all pages
+  const pages = document.querySelectorAll('div[id^="page"]');
+  pages.forEach(page => page.classList.add('hidden'));
+
+  // Show the selected page
+  document.getElementById(page).classList.remove('hidden');
+}
+
+// Function to submit the form and show the results
+function submitForm() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const organisation = document.getElementById('organisation').value;
+
+  if (!name || !email || !phone || !organisation) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  // Initialize EmailJS
+  emailjs.init("s0xjSF6etFB401Gxj"); // Replace with your EmailJS Public Key
+
+  // Send Email
+  emailjs.send("service_xllqjwc", "template_zd89144", {
+    name: name,
+    email: email,
+    phone: phone,
+    organisation: organisation,
+    to_email: "jodie.christian@apims.co.uk"
+  })
+  .then(() => {
+    alert("Your details have been submitted successfully!");
+    showResults();  // Call showResults after successful submission to show the results on Page 6
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+    alert("There was an error submitting your details. Please try again.");
+  });
+}
+
+// Function to show results based on selected activities
+function showResults() {
+  const categoryA = [];
+  const categoryB = [];
+  const categoryC = [];
+
+  // Helper function to add selected activities to the correct category
+  function categorizeActivity(pageSelector, targetArray) {
+    document.querySelectorAll(`${pageSelector} input:checked`).forEach((checkbox) => {
+      const label = checkbox.nextSibling.textContent.trim(); // Retrieves label text next to the checkbox
+      targetArray.push(label);
+    });
+  }
+
+  // Collect selected activities from Pages 1 to 4
+  categorizeActivity("#page1", categoryA);
+  categorizeActivity("#page2", categoryA);
+  categorizeActivity("#page3", categoryB);
+  categorizeActivity("#page4", categoryC);
+
+  // Build the result message
+  let resultMessage = "<strong>A DPIA may cover a single processing operation or a group of similar processing operations.</strong> (<a href='https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/accountability-and-governance/data-protection-impact-assessments/' target='_blank' style='text-decoration: underline;'>ICO guidance here)</a>.\n\n";
+
+resultMessage += "<p>You have indicated that your process or project involves the following activities:</p>\n";
+const allActivities = [...categoryA, ...categoryB, ...categoryC];
+
+// Add bullet points for activities
+if (allActivities.length > 0) {
+  resultMessage += "<ul>";
+  allActivities.forEach(activity => {
+    resultMessage += `<li>${activity}</li>`; // Add each activity as a list item
+  });
+  resultMessage += "</ul>";
+} else {
+  resultMessage += "No activities selected.";
+}
+
+resultMessage += "\n\nBased on your selections, the ICO recommends that you complete a DPIA for the following activities:\n";
+
+// Add bullet points for each category
+if (categoryA.length > 0) {
+  resultMessage += "<strong>Category A Activities:</strong><ul>";
+  categoryA.forEach(activity => {
+    resultMessage += `<li>${activity}</li>`; // Add each activity as a list item
+  });
+  resultMessage += "</ul>";
+}
+
+if (categoryB.length > 0 || categoryC.length > 0) {
+  resultMessage += "<strong>Category B and C Activities:</strong><ul>";
+  if (categoryB.length > 0) {
+    categoryB.forEach(activity => {
+      resultMessage += `<li>${activity}</li>`; // Add each activity as a list item
+    });
+  }
+  if (categoryC.length > 0) {
+    categoryC.forEach(activity => {
+      resultMessage += `<li>${activity}</li>`; // Add each activity as a list item
+    });
+  }
+  if (categoryB.length > 0 && categoryC.length > 0) {
+    resultMessage += "<li>A DPIA is required because you selected activities from both categories B and C.</li>";
+  } else if (categoryB.length > 0) {
+    resultMessage += "<li>A DPIA is recommended because you selected activities from category B.</li>";
+  } else if (categoryC.length > 0) {
+    resultMessage += "<li>A DPIA is required because you selected activities from category C.</li>";
+  }
+  resultMessage += "</ul>";
+}
+
+if (allActivities.length === 0) {
+  resultMessage = "No DPIA is required based on your selections.";
+}
+
+  // Display the result message on Page 6
+  document.getElementById("resultMessage").innerHTML = resultMessage;
+  showPage("page6"); // Navigate to Page 6
+}
+
+// Function to restart the process
+function restart(page) {
+  showPage(page);
+}
+</script>
+
+</body>
+</html>
